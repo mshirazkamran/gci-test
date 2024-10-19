@@ -4,7 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-./src/main/resources/credentials-GCI.json
+src/main/resources/*.json
 
 ### STS ###
 .apt_generated
