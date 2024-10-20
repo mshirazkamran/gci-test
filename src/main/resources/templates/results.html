@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Results</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+
+        /* Theme Variables */
+        :root {
+            --bg-color: #1c1c1c;
+            --container-bg-color: linear-gradient(145deg, #332d3d, #1c1c1c);
+            --text-color: #ece1e1;
+            --button-bg-color: #b932ae;
+            --button-hover-color: #ab54cc;
+        }
+
+        /* Light Theme Overrides */
+        body.light-theme {
+            --bg-color: #e0c8c0;
+            --container-bg-color: #ece1e1;
+            --text-color: #1c1717;
+            --button-bg-color: #b932ae;
+            --button-hover-color: #ab54cc;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .message-container {
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            background: var(--container-bg-color);
+            border-radius: 8px;
+            box-shadow: 0 12px 14px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .message-container h1 {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            font-size: 2.2em;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            background-color: var(--button-bg-color);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .cta-button:hover {
+            background-color: var(--button-hover-color);
+        }
+
+        /* Theme Toggle Button */
+        .toggle-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: var(--button-bg-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background-color: var(--button-hover-color);
+        }
+
+        @media (max-width: 480px) {
+            .message-container {
+                padding: 20px;
+            }
+
+            .message-container h1 {
+                font-size: 2em;
+            }
+
+            .cta-button {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Theme Toggle Button -->
+<button class="toggle-button" onclick="toggleTheme()">Toggle Theme</button>
+
+<div class="message-container">
+
+    <a th:if="${isAddedOnGoogleCalendar} == true" target="_blank" class="cta-button">Event link</a>
+    <h1 th:if="${isAddedOnGoogleCalendar} == true" >Event Created Successfully!</h1>
+    <a th:if="${isAddedOnGoogleCalendar} == true"  th:href="${resultMessage}"></a>
+
+<!--    @else-->
+    <h1 th:if="${isAddedOnGoogleCalendar} == false">Event could not be created!</h1>
+    <p th:if="${isAddedOnGoogleCalendar} == false" th:text="${resultMessage}"></p>
+</div>
+
+<script>
+    // Default to dark theme
+    document.body.classList.remove('light-theme');
+
+    function toggleTheme() {
+        document.body.classList.toggle('light-theme');
+    }
+</script>
+
+
+</body>
+</html>
