@@ -31,8 +31,7 @@ This project is a Spring Boot application that integrates with Google Calendar u
    - Click on "Create Credentials" and select "OAuth client ID."
    - Configure the consent screen if prompted.
    - Select "Web application" as the application type.
-   - Enter your authorized redirect URIs (e.g., `http://localhost:8080/oauth2/callback`).
-   - Click "Create" and note your `Client ID` and `Client Secret`.
+   - now download the client-id, client-secrets in json format.
 5. Add test users:
    - In the OAuth consent screen configuration, add the email addresses of colleagues who will test the application.
 
